@@ -1,0 +1,605 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Cabinet dentaire Dr Chtouki Sabrine</title>
+  <meta name="description" content="Studio dentaire au Maroc : soins dentaires modernes, diagnostic précis et accompagnement personnalisé." />
+  <style>
+    :root {
+      --primary: #f297f5;
+      --primary-dark: #f297f5;
+      --text: #2f2f2f;
+      --muted: #666;
+      --bg: #ffffff;
+      --soft: #f8f5ff;
+      --border: #ece6ff;
+      --overlay: rgba(0, 0, 0, 0.45);
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: Arial, sans-serif;
+      color: var(--text);
+      background: var(--bg);
+      line-height: 1.6;
+    }
+
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    img {
+      max-width: 100%;
+      display: block;
+    }
+
+    .container {
+      width: min(1100px, 92%);
+      margin: 0 auto;
+    }
+
+    .btn {
+      display: inline-block;
+      background: var(--primary);
+      color: #fff;
+      padding: 14px 28px;
+      border-radius: 8px;
+      font-weight: 700;
+      transition: 0.3s;
+    }
+
+    .btn:hover {
+      background: var(--primary-dark);
+    }
+
+    header {
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      background: rgba(255,255,255,0.95);
+      border-bottom: 1px solid var(--border);
+      backdrop-filter: blur(8px);
+    }
+
+    .nav {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 18px 0;
+      gap: 20px;
+    }
+
+    .logo {
+      font-size: 1.4rem;
+      font-weight: 700;
+      color: var(--primary-dark);
+    }
+
+    .menu {
+      display: flex;
+      gap: 22px;
+      flex-wrap: wrap;
+      align-items: center;
+    }
+
+    .hero {
+      min-height: 85vh;
+      background:
+        linear-gradient(var(--overlay), var(--overlay)),
+        url('https://www.gvdentalcare.it/wp-content/uploads/2022/03/image-section-58-min.jpeg') center/cover no-repeat;
+      color: white;
+      display: flex;
+      align-items: center;
+      text-align: center;
+    }
+
+    .hero-content {
+      width: min(760px, 92%);
+      margin: 0 auto;
+    }
+
+    .hero h1 {
+      font-size: clamp(2.2rem, 5vw, 4.5rem);
+      margin-bottom: 18px;
+    }
+
+    .hero p {
+      font-size: 1.1rem;
+      margin-bottom: 28px;
+    }
+
+    section {
+      padding: 80px 0;
+    }
+
+    .section-title {
+      text-align: center;
+      margin-bottom: 44px;
+    }
+
+    .section-title p {
+      color: var(--primary-dark);
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      margin-bottom: 10px;
+    }
+
+    .section-title h2 {
+      font-size: clamp(1.8rem, 4vw, 3rem);
+    }
+
+    .cards {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+      gap: 24px;
+    }
+
+    .card {
+      background: #fff;
+      border: 1px solid var(--border);
+      border-radius: 16px;
+      padding: 28px 22px;
+      box-shadow: 0 10px 30px rgba(0,0,0,0.04);
+    }
+
+    .card img {
+      width: 70px;
+      height: 70px;
+      object-fit: contain;
+      margin-bottom: 18px;
+    }
+
+    .card h3 {
+      margin-bottom: 10px;
+      font-size: 1.15rem;
+    }
+
+    .about {
+      background: var(--soft);
+    }
+
+    .about-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 40px;
+      align-items: center;
+    }
+
+    .about-image {
+      min-height: 420px;
+      border-radius: 18px;
+      background: url('https://demo.yolotheme.com/dummy/trusmile/wp-content/uploads/2022/02/step-01.jpg') center/cover no-repeat;
+    }
+
+    .steps {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+      gap: 24px;
+    }
+
+    .step {
+      border: 1px solid var(--border);
+      border-radius: 16px;
+      overflow: hidden;
+      background: #fff;
+    }
+
+    .step img {
+      width: 100%;
+      height: 220px;
+      object-fit: cover;
+    }
+
+    .step-content {
+      padding: 20px;
+    }
+
+    .step-number {
+      display: inline-block;
+      margin-bottom: 10px;
+      color: var(--primary-dark);
+      font-weight: 800;
+    }
+
+    .cta {
+      background: linear-gradient(135deg, var(--primary) 0%, var(--primary-dark) 100%);
+      color: white;
+      text-align: center;
+    }
+
+    .cta h2 {
+      font-size: clamp(1.8rem, 4vw, 3rem);
+      margin-bottom: 14px;
+    }
+
+    footer {
+      background: #1f1f1f;
+      color: white;
+      padding: 60px 0 30px;
+    }
+
+    .footer-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+      gap: 28px;
+      margin-bottom: 30px;
+    }
+
+    .footer-title {
+      margin-bottom: 14px;
+      color: var(--primary);
+    }
+
+    .footer-bottom {
+      border-top: 1px solid rgba(255,255,255,0.12);
+      padding-top: 20px;
+      font-size: 0.95rem;
+      color: #ddd;
+      text-align: center;
+    }
+
+    @media (max-width: 768px) {
+      .nav {
+        flex-direction: column;
+      }
+
+      .menu {
+        justify-content: center;
+      }
+    }
+  
+    .modal {
+      position: fixed;
+      inset: 0;
+      background: rgba(0, 0, 0, 0.55);
+      display: none;
+      align-items: center;
+      justify-content: center;
+      padding: 20px;
+      z-index: 1000;
+    }
+
+    .modal.active {
+      display: flex;
+    }
+
+    .modal-box {
+      background: #fff;
+      width: min(760px, 100%);
+      border-radius: 20px;
+      padding: 30px;
+      position: relative;
+      box-shadow: 0 20px 60px rgba(0,0,0,0.18);
+      max-height: 90vh;
+      overflow-y: auto;
+    }
+
+    .modal-box h2 {
+      margin-bottom: 8px;
+    }
+
+    .modal-intro {
+      color: var(--muted);
+      margin-bottom: 22px;
+    }
+
+    .modal-close {
+      position: absolute;
+      top: 14px;
+      right: 16px;
+      border: none;
+      background: transparent;
+      font-size: 2rem;
+      cursor: pointer;
+      color: var(--primary-dark);
+    }
+
+    .appointment-form label {
+      display: block;
+      margin-bottom: 8px;
+      font-weight: 700;
+    }
+
+    .appointment-form input,
+    .appointment-form select,
+    .appointment-form textarea {
+      width: 100%;
+      padding: 14px 14px;
+      border: 1px solid var(--border);
+      border-radius: 10px;
+      font: inherit;
+      margin-bottom: 18px;
+      outline: none;
+    }
+
+    .appointment-form input:focus,
+    .appointment-form select:focus,
+    .appointment-form textarea:focus {
+      border-color: var(--primary);
+      box-shadow: 0 0 0 3px rgba(205, 180, 255, 0.18);
+    }
+
+    .form-grid {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 18px;
+    }
+
+    @media (max-width: 680px) {
+      .form-grid {
+        grid-template-columns: 1fr;
+        gap: 0;
+      }
+
+      .modal-box {
+        padding: 22px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div id="appointmentModal" class="modal" aria-hidden="true">
+    <div class="modal-box">
+      <button class="modal-close" id="closeModal" aria-label="Fermer">×</button>
+      <h2>Prendre un rendez-vous</h2>
+      <p class="modal-intro">Remplissez le formulaire et vous recevrez la demande par email.</p>
+
+      <form class="appointment-form" action="https://formsubmit.co/hslama2025@gmail.com" method="POST">
+        <input type="hidden" name="_subject" value="Nouvelle demande de rendez-vous - Cabinet dentaire Dr Chtouki Sabrine">
+        <input type="hidden" name="_captcha" value="false">
+        <input type="hidden" name="_template" value="table">
+
+        <div class="form-grid">
+          <div>
+            <label for="name">Nom complet</label>
+            <input id="name" name="Nom" type="text" required>
+          </div>
+          <div>
+            <label for="phone">Téléphone</label>
+            <input id="phone" name="Téléphone" type="tel" required>
+          </div>
+          <div>
+            <label for="email">Email</label>
+            <input id="email" name="Email" type="email" required>
+          </div>
+          <div>
+            <label for="date">Date souhaitée</label>
+            <input id="date" name="Date souhaitée" type="date" required>
+          </div>
+          <div>
+            <label for="time">Heure souhaitée</label>
+            <input id="time" name="Heure souhaitée" type="time" required>
+          </div>
+          <div>
+            <label for="service">Service</label>
+            <select id="service" name="Service" required>
+              <option value="">Choisir</option>
+              <option>Consultation générale</option>
+              <option>Hygiène dentaire</option>
+              <option>Soins conservateurs</option>
+              <option>Endodontie</option>
+              <option>Implantologie</option>
+              <option>Orthodontie esthétique</option>
+            </select>
+          </div>
+        </div>
+
+        <div>
+          <label for="message">Message</label>
+          <textarea id="message" name="Message" rows="5" placeholder="Décrivez brièvement votre demande..."></textarea>
+        </div>
+
+        <button class="btn" type="submit">Envoyer la demande</button>
+      </form>
+    </div>
+  </div>
+  <header>
+    <div class="container nav">
+      <div class="logo">Cabinet dentaire Dr Chtouki Sabrine</div>
+      <nav class="menu">
+        <a href="#accueil">Accueil</a>
+        <a href="#services">Services</a>
+        <a href="#apropos">À propos</a>
+        <a href="#processus">Notre méthode</a>
+        <a href="#contact">Contact</a>
+      </nav>
+    </div>
+  </header>
+
+  <section class="hero" id="accueil">
+    <div class="hero-content">
+      <h1>Le sourire que vous méritez</h1>
+      <p>Cabinet dentaire au Maroc avec une approche moderne, humaine et personnalisée. Nous vous accompagnons pour préserver la santé et l’esthétique de votre sourire.</p>
+      <a class="btn open-appointment-modal" href="#">Prendre rendez-vous</a>
+    </div>
+  </section>
+
+  <section id="services">
+    <div class="container">
+      <div class="section-title">
+        <p>Cabinet dentaire Dr Chtouki Sabrine</p>
+        <h2>Nos services</h2>
+      </div>
+
+      <div class="cards">
+        <article class="card">
+          <img src="https://www.gvdentalcare.it/wp-content/uploads/2023/05/igiene-orale.svg" alt="Hygiène dentaire" />
+          <h3>Hygiène dentaire</h3>
+          <p>Nettoyage professionnel, prévention et conseils pour garder des dents saines au quotidien.</p>
+        </article>
+
+        <article class="card">
+          <img src="https://www.gvdentalcare.it/wp-content/uploads/2023/05/odontoiatria-conservativa.svg" alt="Soins conservateurs" />
+          <h3>Soins conservateurs</h3>
+          <p>Traitements visant à préserver la dent naturelle et à restaurer sa fonction durablement.</p>
+        </article>
+
+        <article class="card">
+          <img src="https://www.gvdentalcare.it/wp-content/uploads/2023/05/endodonzia.svg" alt="Endodontie" />
+          <h3>Endodontie</h3>
+          <p>Traitement des infections internes de la dent avec des techniques précises et modernes.</p>
+        </article>
+
+        <article class="card">
+          <img src="https://www.gvdentalcare.it/wp-content/uploads/2023/05/implantologia.svg" alt="Implantologie" />
+          <h3>Implantologie</h3>
+          <p>Solutions fiables pour remplacer une ou plusieurs dents et retrouver un sourire harmonieux.</p>
+        </article>
+
+        <article class="card">
+          <img src="https://www.gvdentalcare.it/wp-content/uploads/2023/05/parodontologia.svg" alt="Parodontologie" />
+          <h3>Parodontologie</h3>
+          <p>Prise en charge des gencives et des tissus de soutien pour protéger votre santé bucco-dentaire.</p>
+        </article>
+
+        <article class="card">
+          <img src="https://www.gvdentalcare.it/wp-content/uploads/2023/05/ortodonzia-invisibile-1-1.svg" alt="Orthodontie" />
+          <h3>Orthodontie esthétique</h3>
+          <p>Solutions discrètes pour aligner les dents et améliorer le confort comme l’esthétique.</p>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <section class="about" id="apropos">
+    <div class="container about-grid">
+      <div class="about-image"></div>
+      <div>
+        <div class="section-title" style="text-align:left; margin-bottom:24px;">
+          <p>Première consultation</p>
+          <h2>Bilan dentaire complet</h2>
+        </div>
+        <p>Lors de la première visite, nous réalisons une évaluation complète de l’état de santé des dents et de la bouche. Nous utilisons des outils modernes pour établir un diagnostic clair et précis.</p>
+        <br />
+        <p>À la fin de la consultation, nous vous présentons un plan de soins personnalisé, expliqué simplement, avec les étapes recommandées et les bénéfices attendus.</p>
+        <br />
+        <p>Nous remettons également un devis détaillé afin de garantir clarté, transparence et confiance dès le début du traitement.</p>
+        <br />
+        <a class="btn open-appointment-modal" href="#">Réserver maintenant</a>
+      </div>
+    </div>
+  </section>
+
+  <section id="processus">
+    <div class="container">
+      <div class="section-title">
+        <p>Notre méthode</p>
+        <h2>Comment nous travaillons</h2>
+      </div>
+
+      <div class="steps">
+        <article class="step">
+          <img src="https://demo.yolotheme.com/dummy/trusmile/wp-content/uploads/2022/02/step-01.jpg" alt="Prise de rendez-vous" />
+          <div class="step-content">
+            <span class="step-number">01</span>
+            <h3>Prise de rendez-vous</h3>
+            <p>Nous recevons votre demande par téléphone, WhatsApp ou via le site.</p>
+          </div>
+        </article>
+
+        <article class="step">
+          <img src="https://demo.yolotheme.com/dummy/trusmile/wp-content/uploads/2022/02/step-03.jpg" alt="Examen et diagnostic" />
+          <div class="step-content">
+            <span class="step-number">02</span>
+            <h3>Examen et diagnostic</h3>
+            <p>Nous analysons votre situation avec précision pour proposer la meilleure solution.</p>
+          </div>
+        </article>
+
+        <article class="step">
+          <img src="https://demo.yolotheme.com/dummy/trusmile/wp-content/uploads/2022/02/step-02.jpg" alt="Traitements" />
+          <div class="step-content">
+            <span class="step-number">03</span>
+            <h3>Traitements</h3>
+            <p>Nous réalisons les soins nécessaires avec attention, hygiène et confort.</p>
+          </div>
+        </article>
+
+        <article class="step">
+          <img src="https://demo.yolotheme.com/dummy/trusmile/wp-content/uploads/2022/02/step-04.jpg" alt="Suivi" />
+          <div class="step-content">
+            <span class="step-number">04</span>
+            <h3>Suivi</h3>
+            <p>Nous restons à vos côtés pour le contrôle, la prévention et le suivi dans le temps.</p>
+          </div>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <section class="cta">
+    <div class="container">
+      <h2>Prenez rendez-vous pour évaluer la santé de votre sourire</h2>
+      <p style="margin-bottom: 20px;">Appelez-nous au +212 6 00 00 00 00</p>
+      <a class="btn open-appointment-modal" href="#" style="background:#fff;color:#7d5cc6;">Prendre rendez-vous</a>
+    </div>
+  </section>
+
+  <footer id="contact">
+    <div class="container">
+      <div class="footer-grid">
+        <div>
+          <h3 class="footer-title">Cabinet dentaire Dr Chtouki Sabrine</h3>
+          <p>Cabinet dentaire moderne au Maroc, dédié à la santé, au confort et à l’esthétique du sourire.</p>
+        </div>
+        <div>
+          <h3 class="footer-title">Contact</h3>
+          <p>Téléphone : +212 6 00 00 00 00</p>
+          <p>Email : contact@studiodentaire.ma</p>
+          <p>Adresse : 1er étage, en face du stade saniat rmel, 2 Av. Thami Ouazzani, Tétouan, Maroc</p>
+        </div>
+        <div>
+          <h3 class="footer-title">Liens utiles</h3>
+          <p><a href="#services">Services</a></p>
+          <p><a href="#apropos">À propos</a></p>
+          <p><a href="#processus">Notre méthode</a></p>
+        </div>
+      </div>
+
+      <div class="footer-bottom">
+        © 2026 Cabinet dentaire Dr Chtouki Sabrine - Tous droits réservés.
+      </div>
+    </div>
+  </footer>
+  <script>
+    const modal = document.getElementById('appointmentModal');
+    const openButtons = document.querySelectorAll('.open-appointment-modal');
+    const closeButton = document.getElementById('closeModal');
+
+    openButtons.forEach((button) => {
+      button.addEventListener('click', (e) => {
+        e.preventDefault();
+        modal.classList.add('active');
+        modal.setAttribute('aria-hidden', 'false');
+      });
+    });
+
+    closeButton.addEventListener('click', () => {
+      modal.classList.remove('active');
+      modal.setAttribute('aria-hidden', 'true');
+    });
+
+    modal.addEventListener('click', (e) => {
+      if (e.target === modal) {
+        modal.classList.remove('active');
+        modal.setAttribute('aria-hidden', 'true');
+      }
+    });
+
+    document.addEventListener('keydown', (e) => {
+      if (e.key === 'Escape') {
+        modal.classList.remove('active');
+        modal.setAttribute('aria-hidden', 'true');
+      }
+    });
+  </script>
+</body>
+</html>
