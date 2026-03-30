@@ -1,38 +1,62 @@
 <!DOCTYPE html>
-<html lang="fr">
+<html lang="fr-FR">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Cabinet dentaire Dr Chtouki Sabrine </title>
-  <meta name="description" content="Studio dentaire au Maroc : soins dentaires modernes, diagnostic précis et accompagnement personnalisé." />
-  <style>
-    :root {
-      --primary: #f297f5;
-      --primary-dark: #f297f5;
-      --text: #2f2f2f;
-      --muted: #666;
-      --bg: #ffffff;
-      --soft: #f8f5ff;
-      --border: #ece6ff;
-      --overlay: rgba(0, 0, 0, 0.45);
-    }
 
+  <title>Cabinet dentaire au Maroc - Studio Dentaire Atlas</title>
+  <meta name="description" content="Studio Dentaire Atlas propose des soins dentaires modernes, un diagnostic précis et un accompagnement personnalisé pour toute la famille au Maroc." />
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=EB+Garamond:wght@500;600;700&family=Jost:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+  <style>
     * {
-      box-sizing: border-box;
       margin: 0;
       padding: 0;
+      box-sizing: border-box;
+    }
+
+    :root {
+      --primary: #1bd3d6;
+      --primary-dark: #14b8bb;
+      --secondary: #effeff;
+      --text: #262626;
+      --text-light: #6f6f6f;
+      --white: #ffffff;
+      --dark: #1a1a1a;
+      --border: #dff7f8;
+      --shadow: 0 12px 30px rgba(27, 211, 214, 0.15);
+      --radius: 18px;
+      --container: 1200px;
+      --bg: #ededed;
+    }
+
+    html {
+      scroll-behavior: smooth;
     }
 
     body {
-      font-family: Arial, sans-serif;
+      font-family: 'Jost', sans-serif;
       color: var(--text);
       background: var(--bg);
       line-height: 1.6;
     }
 
+    body.no-scroll {
+      overflow: hidden;
+    }
+
+    h1, h2, h3, h4 {
+      font-family: 'EB Garamond', serif;
+      font-weight: 600;
+      line-height: 1.2;
+    }
+
     a {
-      color: inherit;
       text-decoration: none;
+      color: inherit;
     }
 
     img {
@@ -40,222 +64,412 @@
       display: block;
     }
 
+    button {
+      font: inherit;
+    }
+
     .container {
-      width: min(1100px, 92%);
+      width: min(90%, var(--container));
       margin: 0 auto;
     }
 
     .btn {
       display: inline-block;
       background: var(--primary);
-      color: #fff;
+      color: var(--white);
       padding: 14px 28px;
-      border-radius: 8px;
-      font-weight: 700;
-      transition: 0.3s;
+      border-radius: 12px;
+      font-weight: 500;
+      transition: 0.3s ease;
+      border: 2px solid var(--primary);
+      cursor: pointer;
     }
 
     .btn:hover {
       background: var(--primary-dark);
+      border-color: var(--primary-dark);
+      transform: translateY(-2px);
+    }
+
+    .btn-outline {
+      display: inline-block;
+      background: transparent;
+      color: var(--primary-dark);
+      padding: 14px 28px;
+      border-radius: 12px;
+      font-weight: 500;
+      transition: 0.3s ease;
+      border: 2px solid var(--primary);
+      cursor: pointer;
+    }
+
+    .btn-outline:hover {
+      background: var(--primary);
+      color: var(--white);
     }
 
     header {
       position: sticky;
       top: 0;
-      z-index: 100;
-      background: rgba(255,255,255,0.95);
+      z-index: 1000;
+      background: rgba(237, 237, 237, 0.96);
+      backdrop-filter: blur(10px);
       border-bottom: 1px solid var(--border);
-      backdrop-filter: blur(8px);
     }
 
     .nav {
       display: flex;
       justify-content: space-between;
       align-items: center;
-      padding: 18px 0;
+      min-height: 84px;
       gap: 20px;
+      position: relative;
     }
 
     .logo {
-      font-size: 1.4rem;
-      font-weight: 700;
+      font-size: 1.8rem;
       color: var(--primary-dark);
+      font-family: 'EB Garamond', serif;
+      font-weight: 700;
+      white-space: nowrap;
+      z-index: 1002;
     }
 
     .menu {
       display: flex;
-      gap: 22px;
-      flex-wrap: wrap;
       align-items: center;
+      gap: 24px;
+      flex-wrap: wrap;
+    }
+
+    .menu a {
+      font-weight: 500;
+      color: var(--text);
+    }
+
+    .menu a:hover {
+      color: var(--primary-dark);
+    }
+
+    .hamburger {
+      display: none;
+      width: 50px;
+      height: 50px;
+      border: none;
+      background: var(--primary);
+      color: var(--white);
+      border-radius: 12px;
+      cursor: pointer;
+      z-index: 1002;
+      align-items: center;
+      justify-content: center;
+      flex-direction: column;
+      gap: 5px;
+      box-shadow: var(--shadow);
+    }
+
+    .hamburger span {
+      display: block;
+      width: 22px;
+      height: 2.5px;
+      background: var(--white);
+      border-radius: 99px;
+      transition: 0.3s ease;
+    }
+
+    .hamburger.active span:nth-child(1) {
+      transform: translateY(7px) rotate(45deg);
+    }
+
+    .hamburger.active span:nth-child(2) {
+      opacity: 0;
+    }
+
+    .hamburger.active span:nth-child(3) {
+      transform: translateY(-8px) rotate(-45deg);
     }
 
     .hero {
-      min-height: 85vh;
+      position: relative;
+      min-height: 90vh;
       background:
-        linear-gradient(var(--overlay), var(--overlay)),
-        url("banner.jpg") center/cover no-repeat;
-      color: white;
+        linear-gradient(
+          rgba(0, 0, 0, 0.6),
+          rgba(27, 211, 214, 0.08)
+        ),
+        url("https://www.gvdentalcare.it/wp-content/uploads/2022/03/image-section-58-min.jpeg") center/cover no-repeat;
       display: flex;
       align-items: center;
-      text-align: center;
+      color: var(--white);
     }
 
     .hero-content {
-      width: min(760px, 92%);
-      margin: 0 auto;
+      max-width: 760px;
+      padding: 80px 0;
     }
 
     .hero h1 {
-      font-size: clamp(2.2rem, 5vw, 4.5rem);
-      margin-bottom: 18px;
+      font-size: clamp(2.5rem, 5vw, 5rem);
+      margin-bottom: 20px;
     }
 
     .hero p {
-      font-size: 1.1rem;
-      margin-bottom: 28px;
+      font-size: 1.15rem;
+      margin-bottom: 30px;
+      max-width: 650px;
+      color: #f2f2f2;
     }
 
-    section {
-      padding: 80px 0;
+    .section {
+      padding: 90px 0;
     }
 
     .section-title {
       text-align: center;
-      margin-bottom: 44px;
+      margin-bottom: 50px;
     }
 
-    .section-title p {
+    .section-title .small {
       color: var(--primary-dark);
-      font-weight: 700;
+      font-size: 0.95rem;
       text-transform: uppercase;
-      letter-spacing: 1px;
+      letter-spacing: 2px;
       margin-bottom: 10px;
+      display: block;
+      font-weight: 600;
+      font-family: 'Jost', sans-serif;
     }
 
     .section-title h2 {
-      font-size: clamp(1.8rem, 4vw, 3rem);
+      font-size: clamp(2rem, 4vw, 3.4rem);
+      margin-bottom: 12px;
     }
 
-    .cards {
+    .section-title p {
+      color: var(--text-light);
+      max-width: 760px;
+      margin: 0 auto;
+    }
+
+    .services-grid {
       display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
-      gap: 24px;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 28px;
     }
 
-    .card {
-      background: #fff;
+    .service-card {
+      background: var(--white);
       border: 1px solid var(--border);
-      border-radius: 16px;
-      padding: 28px 22px;
-      box-shadow: 0 10px 30px rgba(0,0,0,0.04);
+      border-radius: var(--radius);
+      padding: 28px 24px;
+      box-shadow: var(--shadow);
+      transition: 0.3s ease;
     }
 
-    .card img {
+    .service-card:hover {
+      transform: translateY(-6px);
+    }
+
+    .service-card img {
       width: 70px;
       height: 70px;
       object-fit: contain;
-      margin-bottom: 18px;
+      margin-bottom: 20px;
     }
 
-    .card h3 {
-      margin-bottom: 10px;
-      font-size: 1.15rem;
+    .service-card h3 {
+      font-size: 1.6rem;
+      margin-bottom: 12px;
+    }
+
+    .service-card p {
+      color: var(--text-light);
+      margin-bottom: 16px;
+    }
+
+    .service-card a {
+      color: var(--primary-dark);
+      font-weight: 600;
     }
 
     .about {
-      background: var(--soft);
+      background: var(--secondary);
     }
 
     .about-grid {
       display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      grid-template-columns: 1fr 1fr;
       gap: 40px;
       align-items: center;
     }
 
     .about-image {
-      min-height: 420px;
-      border-radius: 18px;
-      background: url('https://demo.yolotheme.com/dummy/trusmile/wp-content/uploads/2022/02/step-01.jpg') center/cover no-repeat;
+      min-height: 520px;
+      border-radius: var(--radius);
+      background: url("https://demo.yolotheme.com/dummy/trusmile/wp-content/uploads/2022/02/step-01.jpg") center/cover no-repeat;
+      box-shadow: var(--shadow);
     }
 
-    .steps {
+    .about-text h2 {
+      font-size: clamp(2rem, 4vw, 3.2rem);
+      margin-bottom: 18px;
+    }
+
+    .about-text p {
+      color: var(--text-light);
+      margin-bottom: 16px;
+    }
+
+    .steps-grid {
       display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+      grid-template-columns: repeat(4, 1fr);
       gap: 24px;
+      margin-top: 40px;
     }
 
-    .step {
+    .step-card {
+      background: var(--white);
       border: 1px solid var(--border);
-      border-radius: 16px;
+      border-radius: var(--radius);
       overflow: hidden;
-      background: #fff;
+      box-shadow: var(--shadow);
     }
 
-    .step img {
+    .step-card img {
       width: 100%;
       height: 220px;
       object-fit: cover;
     }
 
-    .step-content {
-      padding: 20px;
+    .step-card .content {
+      padding: 22px;
     }
 
     .step-number {
-      display: inline-block;
-      margin-bottom: 10px;
       color: var(--primary-dark);
-      font-weight: 800;
+      font-weight: 700;
+      font-size: 0.95rem;
+      letter-spacing: 1px;
+      margin-bottom: 10px;
+      display: inline-block;
     }
 
-    .cta {
-      background: linear-gradient(135deg, var(--primary) 0%, var(--primary-dark) 100%);
-      color: white;
+    .step-card h3 {
+      margin-bottom: 10px;
+      font-size: 1.6rem;
+    }
+
+    .step-card p {
+      color: var(--text-light);
+    }
+
+   .cta { background: linear-gradient(rgba(247, 249, 250, 0.85), rgba(162, 239, 255, 0.727)),
+        url("https://www.gvdentalcare.it/wp-content/uploads/2022/02/cer-product-image-primescan-dentist-scanning-patient-1200x675-1.jpeg") center/cover no-repeat;
+      color: var(--white);
       text-align: center;
+      padding: 90px 20px;
     }
 
     .cta h2 {
-      font-size: clamp(1.8rem, 4vw, 3rem);
+      font-size: clamp(2rem, 4vw, 3.2rem);
       margin-bottom: 14px;
+    }
+
+    .cta p {
+      font-size: 1.1rem;
+      margin-bottom: 24px;
+      color: #f2f2f2;
+    }
+
+    .articles-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 28px;
+    }
+
+    .article-card {
+      background: var(--white);
+      border-radius: var(--radius);
+      overflow: hidden;
+      box-shadow: var(--shadow);
+      border: 1px solid var(--border);
+    }
+
+    .article-card img {
+      width: 100%;
+      height: 240px;
+      object-fit: cover;
+    }
+
+    .article-card .content {
+      padding: 24px;
+    }
+
+    .article-card .date {
+      font-size: 0.9rem;
+      color: var(--primary-dark);
+      font-weight: 600;
+      margin-bottom: 10px;
+      display: block;
+    }
+
+    .article-card h3 {
+      font-size: 1.5rem;
+      margin-bottom: 12px;
+    }
+
+    .article-card p {
+      color: var(--text-light);
+      margin-bottom: 16px;
     }
 
     footer {
-      background: #1f1f1f;
-      color: white;
-      padding: 60px 0 30px;
+      background: #1a1a1a;
+      color: #f3f3f3;
+      padding: 70px 0 20px;
     }
 
-    .footer-grid {
+    .footer-top {
       display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
-      gap: 28px;
-      margin-bottom: 30px;
+      grid-template-columns: 1.2fr 1fr 1fr;
+      gap: 30px;
+      margin-bottom: 40px;
     }
 
-    .footer-title {
-      margin-bottom: 14px;
+    .footer-logo {
+      font-size: 2rem;
+      color: var(--white);
+      margin-bottom: 15px;
+    }
+
+    .footer-col h4 {
+      margin-bottom: 18px;
+      font-size: 1.5rem;
+    }
+
+    .footer-col p,
+    .footer-col a {
+      color: #d7d7d7;
+      margin-bottom: 10px;
+      display: block;
+    }
+
+    .footer-col a:hover {
       color: var(--primary);
     }
 
     .footer-bottom {
-      border-top: 1px solid rgba(255,255,255,0.12);
+      border-top: 1px solid rgba(255, 255, 255, 0.12);
       padding-top: 20px;
+      display: flex;
+      justify-content: space-between;
+      gap: 20px;
+      flex-wrap: wrap;
       font-size: 0.95rem;
-      color: #ddd;
-      text-align: center;
+      color: #cfcfcf;
     }
 
-    @media (max-width: 768px) {
-      .nav {
-        flex-direction: column;
-      }
-
-      .menu {
-        justify-content: center;
-      }
-    }
-  
+    /* MODAL */
     .modal {
       position: fixed;
       inset: 0;
@@ -264,7 +478,7 @@
       align-items: center;
       justify-content: center;
       padding: 20px;
-      z-index: 1000;
+      z-index: 2000;
     }
 
     .modal.active {
@@ -272,334 +486,669 @@
     }
 
     .modal-box {
+      width: 100%;
+      max-width: 620px;
       background: #fff;
-      width: min(760px, 100%);
-      border-radius: 20px;
-      padding: 30px;
+      border-radius: 22px;
+      box-shadow: 0 25px 60px rgba(0,0,0,0.25);
+      overflow: hidden;
+      animation: popup 0.25s ease;
       position: relative;
-      box-shadow: 0 20px 60px rgba(0,0,0,0.18);
-      max-height: 90vh;
-      overflow-y: auto;
     }
 
-    .modal-box h2 {
-      margin-bottom: 8px;
+    @keyframes popup {
+      from {
+        opacity: 0;
+        transform: translateY(15px) scale(0.98);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0) scale(1);
+      }
     }
 
-    .modal-intro {
-      color: var(--muted);
-      margin-bottom: 22px;
+    .modal-header {
+      padding: 22px 26px 10px;
+      background: #f9ffff;
+      border-bottom: 1px solid var(--border);
+    }
+
+    .modal-header h3 {
+      font-size: 2rem;
+      margin-bottom: 6px;
+      color: var(--dark);
+    }
+
+    .modal-header p {
+      color: var(--text-light);
+      font-size: 0.98rem;
     }
 
     .modal-close {
       position: absolute;
       top: 14px;
-      right: 16px;
+      right: 14px;
+      width: 42px;
+      height: 42px;
       border: none;
-      background: transparent;
-      font-size: 2rem;
+      border-radius: 50%;
+      background: #f0f0f0;
+      color: #333;
       cursor: pointer;
-      color: var(--primary-dark);
+      font-size: 1.4rem;
+      line-height: 1;
     }
 
-    .appointment-form label {
-      display: block;
-      margin-bottom: 8px;
-      font-weight: 700;
-    }
-
-    .appointment-form input,
-    .appointment-form select,
-    .appointment-form textarea {
-      width: 100%;
-      padding: 14px 14px;
-      border: 1px solid var(--border);
-      border-radius: 10px;
-      font: inherit;
-      margin-bottom: 18px;
-      outline: none;
-    }
-
-    .appointment-form input:focus,
-    .appointment-form select:focus,
-    .appointment-form textarea:focus {
-      border-color: var(--primary);
-      box-shadow: 0 0 0 3px rgba(205, 180, 255, 0.18);
+    .booking-form {
+      padding: 24px 26px 26px;
     }
 
     .form-grid {
       display: grid;
-      grid-template-columns: repeat(2, minmax(0, 1fr));
-      gap: 18px;
+      grid-template-columns: 1fr 1fr;
+      gap: 16px;
     }
 
-    @media (max-width: 680px) {
-      .form-grid {
-        grid-template-columns: 1fr;
-        gap: 0;
+    .form-group {
+      display: flex;
+      flex-direction: column;
+      gap: 7px;
+      margin-bottom: 16px;
+    }
+
+    .form-group.full {
+      grid-column: 1 / -1;
+    }
+
+    .form-group label {
+      font-weight: 600;
+      color: var(--dark);
+      font-size: 0.96rem;
+    }
+
+    .form-group input,
+    .form-group select,
+    .form-group textarea {
+      width: 100%;
+      padding: 14px 14px;
+      border: 1px solid #cdeef0;
+      border-radius: 12px;
+      outline: none;
+      font: inherit;
+      background: #fff;
+      color: var(--text);
+      transition: border-color 0.2s ease, box-shadow 0.2s ease;
+    }
+
+    .form-group input:focus,
+    .form-group select:focus,
+    .form-group textarea:focus {
+      border-color: var(--primary);
+      box-shadow: 0 0 0 4px rgba(27, 211, 214, 0.12);
+    }
+
+    .form-group textarea {
+      min-height: 120px;
+      resize: vertical;
+    }
+
+    .form-note {
+      color: var(--text-light);
+      font-size: 0.9rem;
+      margin-bottom: 14px;
+    }
+
+    .booking-submit {
+      width: 100%;
+      justify-content: center;
+      text-align: center;
+    }
+
+    .success-note {
+      background: #eefeff;
+      color: #0d6f72;
+      border: 1px solid #cdeef0;
+      padding: 12px 14px;
+      border-radius: 12px;
+      margin-bottom: 18px;
+      font-size: 0.93rem;
+    }
+
+    @media (max-width: 1100px) {
+      .services-grid,
+      .articles-grid {
+        grid-template-columns: repeat(2, 1fr);
       }
 
-      .modal-box {
-        padding: 22px;
+      .steps-grid {
+        grid-template-columns: repeat(2, 1fr);
+      }
+
+      .footer-top {
+        grid-template-columns: 1fr 1fr;
+      }
+    }
+
+    @media (max-width: 900px) {
+      .hamburger {
+        display: inline-flex;
+      }
+
+      .menu {
+        position: absolute;
+        top: calc(100% + 10px);
+        left: 0;
+        right: 0;
+        width: 100%;
+        background: rgba(255,255,255,0.98);
+        backdrop-filter: blur(12px);
+        border: 1px solid var(--border);
+        border-radius: 18px;
+        box-shadow: 0 18px 40px rgba(0,0,0,0.08);
+        padding: 18px;
+        display: none;
+        flex-direction: column;
+        align-items: stretch;
+        gap: 14px;
+        flex-wrap: nowrap;
+      }
+
+      .menu.active {
+        display: flex;
+      }
+
+      .menu a {
+        text-align: center;
+        padding: 10px 12px;
+        border-radius: 12px;
+      }
+
+      .menu a.btn {
+        width: 100%;
+      }
+    }
+
+    @media (max-width: 768px) {
+      .nav {
+        min-height: 76px;
+      }
+
+      .logo {
+        font-size: 1.55rem;
+        max-width: 75%;
+        line-height: 1.1;
+      }
+
+      .about-grid,
+      .services-grid,
+      .steps-grid,
+      .articles-grid,
+      .footer-top,
+      .form-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .hero {
+        min-height: 78vh;
+      }
+
+      .hero-content {
+        padding: 60px 0;
+      }
+
+      .about-image {
+        min-height: 340px;
+      }
+
+      .footer-bottom {
+        flex-direction: column;
+      }
+
+      .modal-header h3 {
+        font-size: 1.7rem;
       }
     }
   </style>
 </head>
 <body>
-  <div id="appointmentModal" class="modal" aria-hidden="true">
-    <div class="modal-box">
-      <button class="modal-close" id="closeModal" aria-label="Fermer">×</button>
-      <h2>Prendre un rendez-vous</h2>
-      <p class="modal-intro">Remplissez le formulaire et vous recevrez la demande par email.</p>
 
-      <form class="appointment-form" action="https://formsubmit.co/hslama2025@gmail.com" method="POST">
-        <input type="hidden" name="_subject" value="Nouvelle demande de rendez-vous - Cabinet dentaire Dr Chtouki Sabrine">
-        <input type="hidden" name="_captcha" value="false">
-        <input type="hidden" name="_template" value="table">
-
-        <div class="form-grid">
-          <div>
-            <label for="name">Nom complet</label>
-            <input id="name" name="Nom" type="text" required>
-          </div>
-          <div>
-            <label for="phone">Téléphone</label>
-            <input id="phone" name="Téléphone" type="tel" required>
-          </div>
-          <div>
-            <label for="email">Email</label>
-            <input id="email" name="Email" type="email" required>
-          </div>
-          <div>
-            <label for="date">Date souhaitée</label>
-            <input id="date" name="Date souhaitée" type="date" required>
-          </div>
-          <div>
-            <label for="time">Heure souhaitée</label>
-            <input id="time" name="Heure souhaitée" type="time" required>
-          </div>
-          <div>
-            <label for="service">Service</label>
-            <select id="service" name="Service" required>
-              <option value="">Choisir</option>
-              <option>Consultation générale</option>
-              <option>Hygiène dentaire</option>
-              <option>Soins conservateurs</option>
-              <option>Endodontie</option>
-              <option>Implantologie</option>
-              <option>Orthodontie esthétique</option>
-            </select>
-          </div>
-        </div>
-
-        <div>
-          <label for="message">Message</label>
-          <textarea id="message" name="Message" rows="5" placeholder="Décrivez brièvement votre demande..."></textarea>
-        </div>
-
-        <button class="btn" type="submit">Envoyer la demande</button>
-      </form>
-    </div>
-  </div>
   <header>
     <div class="container nav">
-      <div class="logo">Cabinet dentaire Dr Chtouki Sabrine</div>
-      <nav class="menu">
+      <a href="#" class="logo">Cabinet Dentaire /a>
+
+      <nav class="menu" id="mobileMenu">
         <a href="#accueil">Accueil</a>
         <a href="#services">Services</a>
         <a href="#apropos">À propos</a>
         <a href="#processus">Notre méthode</a>
-        <a href="#contact">Contact</a>
+        <a href="#blog">Blog</a>
+        <a href="#contact" class="btn">Contactez-nous</a>
       </nav>
+
+      <button class="hamburger" id="hamburgerBtn" aria-label="Ouvrir le menu" aria-expanded="false" aria-controls="mobileMenu" type="button">
+        <span></span>
+        <span></span>
+        <span></span>
+      </button>
     </div>
   </header>
 
   <section class="hero" id="accueil">
-    <div class="hero-content">
-      <h1>Le sourire que vous méritez</h1>
-      <p>Cabinet dentaire au Maroc avec une approche moderne, humaine et personnalisée. Nous vous accompagnons pour préserver la santé et l’esthétique de votre sourire.</p>
-      <a class="btn open-appointment-modal" href="#">Prendre rendez-vous</a>
+    <div class="container">
+      <div class="hero-content">
+        <h1>Le sourire que vous méritez.</h1>
+        <p>
+          Studio Dentaire Atlas vous accueille au Maroc avec des soins dentaires modernes,
+          un accompagnement personnalisé et une approche centrée sur le confort de chaque patient.
+        </p>
+        <button type="button" class="btn open-booking">Prenez rendez-vous</button>
+      </div>
     </div>
   </section>
 
-  <section id="services">
+  <section class="section" id="services">
     <div class="container">
       <div class="section-title">
-        <p>Cabinet dentaire Dr Chtouki Sabrine</p>
+        <span class="small">Studio Dentaire Atlas</span>
         <h2>Nos services</h2>
+        <p>
+          Des traitements modernes, sûrs et adaptés à toute la famille, avec une attention particulière
+          à l’esthétique, à la prévention et au confort du patient.
+        </p>
       </div>
 
-      <div class="cards">
-        <article class="card">
-          <img src="https://www.gvdentalcare.it/wp-content/uploads/2023/05/igiene-orale.svg" alt="Hygiène dentaire" />
-          <h3>Hygiène dentaire</h3>
-          <p>Nettoyage professionnel, prévention et conseils pour garder des dents saines au quotidien.</p>
-        </article>
-
-        <article class="card">
-          <img src="https://www.gvdentalcare.it/wp-content/uploads/2023/05/odontoiatria-conservativa.svg" alt="Soins conservateurs" />
-          <h3>Soins conservateurs</h3>
-          <p>Traitements visant à préserver la dent naturelle et à restaurer sa fonction durablement.</p>
-        </article>
-
-        <article class="card">
-          <img src="https://www.gvdentalcare.it/wp-content/uploads/2023/05/endodonzia.svg" alt="Endodontie" />
-          <h3>Endodontie</h3>
-          <p>Traitement des infections internes de la dent avec des techniques précises et modernes.</p>
-        </article>
-
-        <article class="card">
-          <img src="https://www.gvdentalcare.it/wp-content/uploads/2023/05/implantologia.svg" alt="Implantologie" />
-          <h3>Implantologie</h3>
-          <p>Solutions fiables pour remplacer une ou plusieurs dents et retrouver un sourire harmonieux.</p>
-        </article>
-
-        <article class="card">
-          <img src="https://www.gvdentalcare.it/wp-content/uploads/2023/05/parodontologia.svg" alt="Parodontologie" />
-          <h3>Parodontologie</h3>
-          <p>Prise en charge des gencives et des tissus de soutien pour protéger votre santé bucco-dentaire.</p>
-        </article>
-
-        <article class="card">
-          <img src="https://www.gvdentalcare.it/wp-content/uploads/2023/05/ortodonzia-invisibile-1-1.svg" alt="Orthodontie" />
-          <h3>Orthodontie esthétique</h3>
-          <p>Solutions discrètes pour aligner les dents et améliorer le confort comme l’esthétique.</p>
-        </article>
-      </div>
-    </div>
-  </section>
-
-  <section class="about" id="apropos">
-    <div class="container about-grid">
-      <div class="about-image"></div>
-      <div>
-        <div class="section-title" style="text-align:left; margin-bottom:24px;">
-          <p>Première consultation</p>
-          <h2>Bilan dentaire complet</h2>
+      <div class="services-grid">
+        <div class="service-card">
+          <img src="https://www.gvdentalcare.it/wp-content/uploads/2023/05/ortodonzia-invisibile-1-1.svg" alt="Orthodontie invisible">
+          <h3>Orthodontie invisible</h3>
+          <p>Une solution discrète et moderne pour aligner les dents et améliorer le sourire sans appareil métallique visible.</p>
+          <a href="#">Lire la suite</a>
         </div>
-        <p>Lors de la première visite, nous réalisons une évaluation complète de l’état de santé des dents et de la bouche. Nous utilisons des outils modernes pour établir un diagnostic clair et précis.</p>
-        <br />
-        <p>À la fin de la consultation, nous vous présentons un plan de soins personnalisé, expliqué simplement, avec les étapes recommandées et les bénéfices attendus.</p>
-        <br />
-        <p>Nous remettons également un devis détaillé afin de garantir clarté, transparence et confiance dès le début du traitement.</p>
-        <br />
-        <a class="btn open-appointment-modal" href="#">Réserver maintenant</a>
+
+        <div class="service-card">
+          <img src="https://www.gvdentalcare.it/wp-content/uploads/2023/05/medicina-estetica.svg" alt="Médecine esthétique">
+          <h3>Médecine esthétique</h3>
+          <p>Des traitements esthétiques du visage pour harmoniser le sourire et améliorer l’apparence globale avec naturel.</p>
+          <a href="#">Lire la suite</a>
+        </div>
+
+        <div class="service-card">
+          <img src="https://www.gvdentalcare.it/wp-content/uploads/2023/05/pedodonzia.svg" alt="Dentisterie pédiatrique">
+          <h3>Dentisterie pédiatrique</h3>
+          <p>Des soins adaptés aux enfants dans un environnement rassurant, avec un suivi attentif de la santé bucco-dentaire.</p>
+          <a href="#">Lire la suite</a>
+        </div>
+
+        <div class="service-card">
+          <img src="https://www.gvdentalcare.it/wp-content/uploads/2023/05/parodontologia.svg" alt="Parodontologie">
+          <h3>Parodontologie</h3>
+          <p>Prévention, diagnostic et traitement des maladies des gencives et des tissus de soutien de la dent.</p>
+          <a href="#">Lire la suite</a>
+        </div>
+
+        <div class="service-card">
+          <img src="https://www.gvdentalcare.it/wp-content/uploads/2023/05/implantologia.svg" alt="Implantologie">
+          <h3>Implantologie</h3>
+          <p>Remplacement durable des dents manquantes grâce à des implants modernes pour retrouver fonction et esthétique.</p>
+          <a href="#">Lire la suite</a>
+        </div>
+
+        <div class="service-card">
+          <img src="https://www.gvdentalcare.it/wp-content/uploads/2023/05/chirurgia-orale.svg" alt="Chirurgie orale">
+          <h3>Chirurgie orale</h3>
+          <p>Interventions dentaires et buccales réalisées avec précision, sécurité et un accompagnement complet du patient.</p>
+          <a href="#">Lire la suite</a>
+        </div>
+
+        <div class="service-card">
+          <img src="https://www.gvdentalcare.it/wp-content/uploads/2023/05/protesica.svg" alt="Prothèses dentaires">
+          <h3>Prothèses dentaires</h3>
+          <p>Solutions fixes ou amovibles conçues pour restaurer les dents absentes et améliorer confort et mastication.</p>
+          <a href="#">Lire la suite</a>
+        </div>
+
+        <div class="service-card">
+          <img src="https://www.gvdentalcare.it/wp-content/uploads/2023/05/endodonzia.svg" alt="Endodontie">
+          <h3>Endodontie</h3>
+          <p>Traitement des infections internes de la dent afin de préserver la dent naturelle et soulager la douleur.</p>
+          <a href="#">Lire la suite</a>
+        </div>
+
+        <div class="service-card">
+          <img src="https://www.gvdentalcare.it/wp-content/uploads/2023/05/odontoiatria-conservativa.svg" alt="Dentisterie conservatrice">
+          <h3>Dentisterie conservatrice</h3>
+          <p>Soins visant à préserver au maximum la structure dentaire naturelle avec des traitements précis et efficaces.</p>
+          <a href="#">Lire la suite</a>
+        </div>
+
+        <div class="service-card">
+          <img src="https://www.gvdentalcare.it/wp-content/uploads/2023/05/diagnostica-per-immagini-1.svg" alt="Imagerie diagnostique">
+          <h3>Imagerie diagnostique</h3>
+          <p>Des technologies modernes pour une analyse détaillée et un diagnostic rapide de l’état bucco-dentaire.</p>
+          <a href="#">Lire la suite</a>
+        </div>
+
+        <div class="service-card">
+          <img src="https://www.gvdentalcare.it/wp-content/uploads/2022/03/igiene-orale.svg" alt="Hygiène et blanchiment">
+          <h3>Hygiène et blanchiment</h3>
+          <p>Nettoyage professionnel, prévention et blanchiment pour garder un sourire sain, lumineux et harmonieux.</p>
+          <a href="#">Lire la suite</a>
+        </div>
+
+        <div class="service-card">
+          <img src="https://www.gvdentalcare.it/wp-content/uploads/2023/05/ortodonzia-invisibile-1-1.svg" alt="Consultation complète">
+          <h3>Consultation complète</h3>
+          <p>Une première visite approfondie avec diagnostic, plan de traitement personnalisé et devis clair.</p>
+          <a href="#">Lire la suite</a>
+        </div>
       </div>
     </div>
   </section>
 
-  <section id="processus">
+  <section class="section about" id="apropos">
+    <div class="container">
+      <div class="about-grid">
+        <div class="about-image"></div>
+
+        <div class="about-text">
+          <span class="small" style="color: var(--primary-dark); text-transform: uppercase; font-weight: 600; letter-spacing: 2px;">Bilan dentaire complet</span>
+          <h2>Une approche moderne et personnalisée</h2>
+
+          <p>
+            La première consultation dans notre cabinet est consacrée à une
+            <strong>évaluation complète de l’état de santé des dents et de la bouche</strong>.
+            Nous utilisons des techniques modernes comme le scanner intra-oral
+            pour obtenir une vision précise et détaillée.
+          </p>
+
+          <p>
+            À la fin de la visite, notre équipe vous présente
+            <strong>un plan de traitement personnalisé</strong>, expliqué de manière simple,
+            claire et adaptée à vos besoins.
+          </p>
+
+          <p>
+            Nous vous remettons également <strong>un devis détaillé</strong> afin de garantir
+            transparence, confiance et sérénité avant le début des soins.
+          </p>
+
+          <button type="button" class="btn-outline open-booking">Réservez maintenant</button>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section" id="processus">
     <div class="container">
       <div class="section-title">
-        <p>Notre méthode</p>
-        <h2>Comment nous travaillons</h2>
+        <span class="small">Comment nous travaillons</span>
+        <h2>Notre méthode</h2>
+        <p>
+          Studio Dentaire Atlas accueille les patients, réalise un examen précis,
+          propose des traitements personnalisés et assure un suivi régulier pour
+          préserver la santé bucco-dentaire.
+        </p>
       </div>
 
-      <div class="steps">
-        <article class="step">
-          <img src="https://demo.yolotheme.com/dummy/trusmile/wp-content/uploads/2022/02/step-01.jpg" alt="Prise de rendez-vous" />
-          <div class="step-content">
+      <div class="steps-grid">
+        <div class="step-card">
+          <img src="https://demo.yolotheme.com/dummy/trusmile/wp-content/uploads/2022/02/step-01.jpg" alt="Prise de rendez-vous">
+          <div class="content">
             <span class="step-number">01</span>
             <h3>Prise de rendez-vous</h3>
-            <p>Nous recevons votre demande par téléphone, WhatsApp ou via le site.</p>
+            <p>Nous recevons votre demande par téléphone, WhatsApp ou via le site internet.</p>
           </div>
-        </article>
+        </div>
 
-        <article class="step">
-          <img src="https://demo.yolotheme.com/dummy/trusmile/wp-content/uploads/2022/02/step-03.jpg" alt="Examen et diagnostic" />
-          <div class="step-content">
+        <div class="step-card">
+          <img src="https://demo.yolotheme.com/dummy/trusmile/wp-content/uploads/2022/02/step-03.jpg" alt="Examen et diagnostic">
+          <div class="content">
             <span class="step-number">02</span>
             <h3>Examen et diagnostic</h3>
-            <p>Nous analysons votre situation avec précision pour proposer la meilleure solution.</p>
+            <p>Nous analysons votre santé bucco-dentaire grâce à un examen clinique précis et des outils modernes.</p>
           </div>
-        </article>
+        </div>
 
-        <article class="step">
-          <img src="https://demo.yolotheme.com/dummy/trusmile/wp-content/uploads/2022/02/step-02.jpg" alt="Traitements" />
-          <div class="step-content">
+        <div class="step-card">
+          <img src="https://demo.yolotheme.com/dummy/trusmile/wp-content/uploads/2022/02/step-02.jpg" alt="Soins et traitements">
+          <div class="content">
             <span class="step-number">03</span>
-            <h3>Traitements</h3>
-            <p>Nous réalisons les soins nécessaires avec attention, hygiène et confort.</p>
+            <h3>Soins et traitements</h3>
+            <p>Nous réalisons les soins nécessaires selon vos besoins, avec confort, sécurité et attention aux détails.</p>
           </div>
-        </article>
+        </div>
 
-        <article class="step">
-          <img src="https://demo.yolotheme.com/dummy/trusmile/wp-content/uploads/2022/02/step-04.jpg" alt="Suivi" />
-          <div class="step-content">
+        <div class="step-card">
+          <img src="https://demo.yolotheme.com/dummy/trusmile/wp-content/uploads/2022/02/step-04.jpg" alt="Suivi et contrôle">
+          <div class="content">
             <span class="step-number">04</span>
-            <h3>Suivi</h3>
-            <p>Nous restons à vos côtés pour le contrôle, la prévention et le suivi dans le temps.</p>
+            <h3>Suivi et contrôle</h3>
+            <p>Nous restons en contact avec vous pour le suivi, la prévention et les visites de contrôle régulières.</p>
           </div>
-        </article>
+        </div>
       </div>
     </div>
   </section>
 
   <section class="cta">
     <div class="container">
-      <h2>Prenez rendez-vous pour évaluer la santé de votre sourire</h2>
-      <p style="margin-bottom: 20px;">Appelez-nous au +212 6 00 00 00 00</p>
-      <a class="btn open-appointment-modal" href="#" style="background:#fff;color:#7d5cc6;">Prendre rendez-vous</a>
+      <h2>Réservez dès maintenant votre visite</h2>
+      <p>Évaluez la santé de votre sourire avec notre équipe au Maroc.</p>
+      <button type="button" class="btn open-booking" style="background:#fff; color: var(--primary-dark); border-color:#fff;">Prendre rendez-vous</button>
+    </div>
+  </section>
+
+  <section class="section" id="blog">
+    <div class="container">
+      <div class="section-title">
+        <span class="small">Blog</span>
+        <h2>Conseils et actualités dentaires</h2>
+        <p>
+          Retrouvez des informations utiles pour prendre soin de votre sourire et
+          découvrir les technologies modernes utilisées dans notre cabinet.
+        </p>
+      </div>
+
+      <div class="articles-grid">
+        <article class="article-card">
+          <img src="https://www.gvdentalcare.it/wp-content/uploads/2022/02/image-layer01-1-1.jpeg" alt="Anxiété chez le dentiste">
+          <div class="content">
+            <span class="date">14 Avril 2026</span>
+            <h3>Comment réduire l’anxiété avant une visite chez le dentiste</h3>
+            <p>Découvrez quelques conseils simples pour vivre votre rendez-vous dentaire avec plus de calme et de confiance.</p>
+            <a href="#" style="color: var(--primary-dark); font-weight: 600;">Lire l’article</a>
+          </div>
+        </article>
+
+        <article class="article-card">
+          <img src="https://www.gvdentalcare.it/wp-content/uploads/2022/02/cer-product-image-primescan-dentist-scanning-patient-1200x675-1.jpeg" alt="Technologie scanner intra-oral">
+          <div class="content">
+            <span class="date">08 Avril 2026</span>
+            <h3>Les avantages du scanner intra-oral</h3>
+            <p>Une technologie moderne pour un diagnostic plus précis, plus rapide et plus confortable pour le patient.</p>
+            <a href="#" style="color: var(--primary-dark); font-weight: 600;">Lire l’article</a>
+          </div>
+        </article>
+
+        <article class="article-card">
+          <img src="https://www.gvdentalcare.it/wp-content/uploads/2022/02/Screenshot-2023-05-24-alle-17.29.41.png" alt="Orthodontie invisible">
+          <div class="content">
+            <span class="date">02 Avril 2026</span>
+            <h3>Orthodontie invisible : une solution discrète et efficace</h3>
+            <p>Améliorez l’alignement de vos dents avec une option esthétique adaptée aux adultes et aux adolescents.</p>
+            <a href="#" style="color: var(--primary-dark); font-weight: 600;">Lire l’article</a>
+          </div>
+        </article>
+      </div>
     </div>
   </section>
 
   <footer id="contact">
     <div class="container">
-      <div class="footer-grid">
-        <div>
-          <h3 class="footer-title">Cabinet dentaire Dr Chtouki Sabrine</h3>
-          <p>Cabinet dentaire moderne au Maroc, dédié à la santé, au confort et à l’esthétique du sourire.</p>
+      <div class="footer-top">
+        <div class="footer-col">
+          <div class="footer-logo">Studio Dentaire Atlas</div>
+          <p>
+            Cabinet dentaire moderne au Maroc, dédié à la santé bucco-dentaire,
+            au confort du patient et à l’esthétique du sourire.
+          </p>
         </div>
-        <div>
-          <h3 class="footer-title">Contact</h3>
-          <p>Téléphone : +212 6 00 00 00 00</p>
-          <p>Email : contact@studiodentaire.ma</p>
-          <p>Adresse : 1er étage, en face du stade saniat rmel, 2 Av. Thami Ouazzani, Tétouan, Maroc</p>
+
+        <div class="footer-col">
+          <h4>Contactez-nous</h4>
+          <a href="tel:+212600000000">Téléphone : +212 6 00 00 00 00</a>
+          <a href="mailto:contact@studiodentaireatlas.ma">contact@studiodentaireatlas.ma</a>
+          <p>Centre-ville, Tanger, Maroc</p>
         </div>
-        <div>
-          <h3 class="footer-title">Liens utiles</h3>
-          <p><a href="#services">Services</a></p>
-          <p><a href="#apropos">À propos</a></p>
-          <p><a href="#processus">Notre méthode</a></p>
+
+        <div class="footer-col">
+          <h4>Liens utiles</h4>
+          <a href="#accueil">Accueil</a>
+          <a href="#services">Services</a>
+          <a href="#apropos">À propos</a>
+          <a href="#">Politique de confidentialité</a>
+          <a href="#">Politique des cookies</a>
         </div>
       </div>
 
       <div class="footer-bottom">
-        © 2026 Cabinet dentaire Dr Chtouki Sabrine - Tous droits réservés.
+        <p>© 2026 Studio Dentaire Atlas - Tous droits réservés.</p>
+        <p>Cabinet dentaire au Maroc | Site en français</p>
       </div>
     </div>
   </footer>
-  <script>
-    const modal = document.getElementById('appointmentModal');
-    const openButtons = document.querySelectorAll('.open-appointment-modal');
-    const closeButton = document.getElementById('closeModal');
 
-    openButtons.forEach((button) => {
-      button.addEventListener('click', (e) => {
-        e.preventDefault();
-        modal.classList.add('active');
-        modal.setAttribute('aria-hidden', 'false');
+  <!-- MODAL BOOKING FORM -->
+  <div class="modal" id="bookingModal" aria-hidden="true">
+    <div class="modal-box">
+      <button class="modal-close" id="closeModal" type="button" aria-label="Fermer">×</button>
+
+      <div class="modal-header">
+        <h3>Prendre rendez-vous</h3>
+        <p>Remplissez ce formulaire. Le message sera envoyé automatiquement à votre adresse email.</p>
+      </div>
+
+      <form class="booking-form" action="https://formsubmit.co/TUA_EMAIL@esempio.com" method="POST">
+        <input type="hidden" name="_subject" value="Nouvelle demande de rendez-vous - Studio Dentaire Atlas">
+        <input type="hidden" name="_captcha" value="false">
+        <input type="hidden" name="_template" value="table">
+        <input type="hidden" name="_next" value="https://example.com/merci.html">
+
+        <div class="success-note">
+          Remplacez d’abord <strong>TUA_EMAIL@esempio.com</strong> par votre vraie adresse email dans le code.
+        </div>
+
+        <div class="form-grid">
+          <div class="form-group">
+            <label for="nom">Nom complet</label>
+            <input type="text" id="nom" name="Nom complet" placeholder="Votre nom" required>
+          </div>
+
+          <div class="form-group">
+            <label for="telephone">Téléphone</label>
+            <input type="tel" id="telephone" name="Téléphone" placeholder="+212 ..." required>
+          </div>
+
+          <div class="form-group">
+            <label for="email">Adresse email</label>
+            <input type="email" id="email" name="Email" placeholder="votre@email.com" required>
+          </div>
+
+          <div class="form-group">
+            <label for="service">Service souhaité</label>
+            <select id="service" name="Service souhaité" required>
+              <option value="">Choisissez un service</option>
+              <option>Consultation complète</option>
+              <option>Orthodontie invisible</option>
+              <option>Implantologie</option>
+              <option>Chirurgie orale</option>
+              <option>Endodontie</option>
+              <option>Hygiène et blanchiment</option>
+              <option>Dentisterie pédiatrique</option>
+              <option>Autre</option>
+            </select>
+          </div>
+
+          <div class="form-group">
+            <label for="date">Date souhaitée</label>
+            <input type="date" id="date" name="Date souhaitée">
+          </div>
+
+          <div class="form-group">
+            <label for="heure">Heure souhaitée</label>
+            <input type="time" id="heure" name="Heure souhaitée">
+          </div>
+
+          <div class="form-group full">
+            <label for="message">Message</label>
+            <textarea id="message" name="Message" placeholder="Décrivez votre demande..."></textarea>
+          </div>
+        </div>
+
+        <p class="form-note">En cliquant sur envoyer, la demande sera transmise à votre email.</p>
+
+        <button type="submit" class="btn booking-submit">Envoyer la demande</button>
+      </form>
+    </div>
+  </div>
+
+  <script>
+    // MOBILE MENU
+    const hamburgerBtn = document.getElementById("hamburgerBtn");
+    const mobileMenu = document.getElementById("mobileMenu");
+
+    hamburgerBtn.addEventListener("click", function () {
+      mobileMenu.classList.toggle("active");
+      hamburgerBtn.classList.toggle("active");
+
+      const expanded = hamburgerBtn.classList.contains("active");
+      hamburgerBtn.setAttribute("aria-expanded", expanded ? "true" : "false");
+    });
+
+    // CLOSE MOBILE MENU ON LINK CLICK
+    document.querySelectorAll(".menu a").forEach(link => {
+      link.addEventListener("click", () => {
+        mobileMenu.classList.remove("active");
+        hamburgerBtn.classList.remove("active");
+        hamburgerBtn.setAttribute("aria-expanded", "false");
       });
     });
 
-    closeButton.addEventListener('click', () => {
-      modal.classList.remove('active');
-      modal.setAttribute('aria-hidden', 'true');
+    // MODAL BOOKING
+    const modal = document.getElementById("bookingModal");
+    const openButtons = document.querySelectorAll(".open-booking");
+    const closeModal = document.getElementById("closeModal");
+
+    function openBookingModal() {
+      modal.classList.add("active");
+      modal.setAttribute("aria-hidden", "false");
+      document.body.classList.add("no-scroll");
+    }
+
+    function closeBookingModal() {
+      modal.classList.remove("active");
+      modal.setAttribute("aria-hidden", "true");
+      document.body.classList.remove("no-scroll");
+    }
+
+    openButtons.forEach(button => {
+      button.addEventListener("click", openBookingModal);
     });
 
-    modal.addEventListener('click', (e) => {
+    closeModal.addEventListener("click", closeBookingModal);
+
+    modal.addEventListener("click", function (e) {
       if (e.target === modal) {
-        modal.classList.remove('active');
-        modal.setAttribute('aria-hidden', 'true');
+        closeBookingModal();
       }
     });
 
-    document.addEventListener('keydown', (e) => {
-      if (e.key === 'Escape') {
-        modal.classList.remove('active');
-        modal.setAttribute('aria-hidden', 'true');
+    document.addEventListener("keydown", function (e) {
+      if (e.key === "Escape" && modal.classList.contains("active")) {
+        closeBookingModal();
       }
     });
   </script>
+
 </body>
 </html>
